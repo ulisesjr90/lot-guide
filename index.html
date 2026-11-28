@@ -356,6 +356,32 @@ body{font-variant-numeric:tabular-nums}.say i{color:#4a5263}
 #err{min-height:24px;margin-top:10px;color:#b3261e;font-weight:700;font-size:16px}
 #lock p.note{margin:14px 0 0}
 #lockLink{color:#4a5263}
+
+/* UI Improvements */
+html{scroll-behavior:smooth}
+button:not(:disabled):hover,.dd:not([aria-expanded="true"]):hover,.opt:not(.on):hover,.tb:not(.on):hover,.ahd:hover{transform:translateY(-1px);transition:all .2s cubic-bezier(.22,1,.36,1)}
+button:not(:disabled):hover{box-shadow:0 2px 8px rgba(0,44,95,.15)}
+.nx:hover,.qb.next:hover{background:#003a7a;box-shadow:0 4px 12px rgba(0,44,95,.25)}
+nav button:not(.on):hover{background:#f4f6f9;border-color:#4a90e2}
+.dd:not([aria-expanded="true"]):hover{background:#f9fafb;border-color:#4a90e2}
+button:focus-visible,.dd:focus-visible,.ahd:focus-visible,.opt:focus-visible,summary:focus-visible{outline:3px solid #0b57d0;outline-offset:2px}
+button:focus{outline:none}
+#srQ:focus,#invQ:focus{border-color:#0b57d0;box-shadow:0 0 0 3px rgba(11,87,208,.1)}
+.qlrow button{min-height:44px;padding:10px 12px}
+.card:hover,.htile:hover,.inv-row:hover,.lotu-row:hover,.hrowb:hover{box-shadow:0 4px 12px rgba(0,44,95,.1);transform:translateY(-2px);transition:all .2s cubic-bezier(.22,1,.36,1)}
+button:disabled{cursor:not-allowed;transform:none!important}
+button:disabled:hover{box-shadow:none!important}
+#ddx{transition:opacity .2s;backdrop-filter:blur(2px)}
+.ddp{animation:slideDown .2s cubic-bezier(.22,1,.36,1)}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+::selection{background:#002C5F;color:#ffffff}
+.loading{background:linear-gradient(90deg,#f4f6f9 25%,#fff 50%,#f4f6f9 75%);background-size:200% 100%;animation:loading 1.5s ease-in-out infinite;pointer-events:none}
+@keyframes loading{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.empty-state{text-align:center;padding:48px 16px;color:#4a5263}
+.empty-state h3{color:#002C5F;font-size:18px;margin:0 0 8px}
+:target{scroll-margin-top:120px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+@media(prefers-color-scheme:dark){:root{--navy:#4a90e2;--ink:#e8eaed;--ink2:#b8bcc4;--line:#3a3f4a;--bg:#1a1f29;--card:#2d3139;--gas:#5a9fd4;--gasbg:#1e3a52;--hyb:#4caf50;--hybbg:#1e3a28;--gold:#f9d978;--goldbg:#3d3420;--goldink:#f9d978;--red:#ef5350}body{background:var(--bg)}header{background:#1a2744}.dd,.ddp,nav,#bar{background:#1a2744;border-color:#3a3f4a}nav button,.dd,button,.card,details,#srQ,#invQ,#pw,.lotu,.inv-rows,.hrows,.fpick,.fbest{background:var(--card);color:var(--ink);border-color:var(--line)}.ddp button{background:var(--card)!important;color:var(--ink)!important}.say{background:#3d3420;border-color:#5a4a20;color:#f9d978}.empty-state{color:var(--ink2)}}
 </style>
 </head>
 <body>

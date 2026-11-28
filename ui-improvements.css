@@ -1,0 +1,396 @@
+/**
+ * WJH Floor Guide - Critical UI Improvements
+ * Add this CSS file to enhance accessibility, usability, and visual polish
+ */
+
+/* ============================================
+   PRIORITY 1: ACCESSIBILITY FIXES
+   ============================================ */
+
+/* 1.1 Focus Indicators - WCAG 2.1 Requirement */
+button:focus-visible,
+.dd:focus-visible,
+.ahd:focus-visible,
+.opt:focus-visible,
+.tb:focus-visible,
+summary:focus-visible {
+    outline: 3px solid #0b57d0;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 1px #ffffff;
+}
+
+/* Remove default outline to prevent double-ring */
+button:focus,
+.dd:focus,
+.ahd:focus {
+    outline: none;
+}
+
+/* 1.2 Color Contrast Improvements */
+.ddl {
+    color: #cfdcf0; /* Improved contrast on navy background */
+}
+
+#bar .qlrow button {
+    border-color: #7a8ea8; /* Better contrast in dark bar */
+}
+
+.spec,
+.astk,
+.at small {
+    color: #5a6477; /* Slightly darker for better readability */
+}
+
+/* 1.3 Increase chip text size for readability */
+.chip {
+    font-size: 15px; /* Up from 14px */
+    line-height: 1.2;
+}
+
+/* ============================================
+   PRIORITY 2: MOBILE & TOUCH IMPROVEMENTS
+   ============================================ */
+
+/* 2.1 Minimum Touch Target Sizes (44x44px minimum) */
+.qlrow button {
+    min-height: 44px; /* Up from 36px */
+    padding: 10px 12px;
+}
+
+.chip.interactive,
+button.chip {
+    min-height: 44px;
+    padding: 10px 12px;
+}
+
+/* 2.2 Horizontal Scroll Indicators */
+.qlrow {
+    position: relative;
+}
+
+.qlrow::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 32px;
+    background: linear-gradient(to right, rgba(11, 61, 120, 0), rgba(11, 61, 120, 0.9));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.qlrow.has-scroll::after {
+    opacity: 1;
+}
+
+/* Show subtle scrollbar on mobile */
+.qlrow::-webkit-scrollbar {
+    height: 3px;
+}
+
+.qlrow::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.qlrow::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+/* 2.3 Sticky Header Scroll Margin */
+:target {
+    scroll-margin-top: 120px;
+}
+
+/* ============================================
+   PRIORITY 3: HOVER & INTERACTION STATES
+   ============================================ */
+
+/* 3.1 Button Hover States */
+button:not(:disabled):hover,
+.tb:not(.on):hover,
+.opt:not(.on):hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 44, 95, 0.15);
+    transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+button:not(:disabled):active {
+    transform: translateY(0);
+}
+
+/* Primary button hover */
+.nx:hover,
+.qb.next:hover {
+    background: #003a7a;
+    box-shadow: 0 4px 12px rgba(0, 44, 95, 0.25);
+}
+
+/* Dropdown hover (when not expanded) */
+.dd:not([aria-expanded="true"]):hover {
+    background: #f9fafb;
+    border-color: #4a90e2;
+}
+
+/* Nav button hover */
+nav button:not(.on):hover {
+    background: #f4f6f9;
+    border-color: #4a90e2;
+}
+
+/* Accordion header hover */
+.ahd:hover {
+    background: rgba(0, 44, 95, 0.03);
+}
+
+/* 3.2 Card Hover for Interactive Cards */
+.card.interactive:hover,
+.htile:hover,
+.inv-row:hover,
+.lotu-row:hover {
+    box-shadow: 0 4px 12px rgba(0, 44, 95, 0.1);
+    transform: translateY(-2px);
+    transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================
+   PRIORITY 4: INPUT FOCUS STATES
+   ============================================ */
+
+/* 4.1 Input Focus Improvements */
+#srQ:focus,
+#invQ:focus,
+#pw:focus,
+.qcur input:focus {
+    outline: none;
+    border-color: #0b57d0;
+    box-shadow: 0 0 0 3px rgba(11, 87, 208, 0.1);
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+/* ============================================
+   PRIORITY 5: LOADING & EMPTY STATES
+   ============================================ */
+
+/* 5.1 Loading Skeleton */
+.loading {
+    background: linear-gradient(
+        90deg,
+        #f4f6f9 25%,
+        #ffffff 50%,
+        #f4f6f9 75%
+    );
+    background-size: 200% 100%;
+    animation: loading 1.5s ease-in-out infinite;
+    color: transparent !important;
+    pointer-events: none;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* 5.2 Empty State */
+.empty-state {
+    text-align: center;
+    padding: 48px 16px;
+    color: #4a5263;
+}
+
+.empty-state-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    opacity: 0.3;
+}
+
+.empty-state h3 {
+    color: #002C5F;
+    font-size: 18px;
+    margin: 0 0 8px;
+}
+
+.empty-state p {
+    margin: 0;
+    font-size: 15px;
+}
+
+/* ============================================
+   PRIORITY 6: SMOOTH INTERACTIONS
+   ============================================ */
+
+/* 6.1 Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* 6.2 Improved Transitions */
+button,
+.dd,
+.opt,
+.tb,
+.card {
+    transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================
+   PRIORITY 7: DISABLED STATES
+   ============================================ */
+
+/* 7.1 Consistent Disabled Styling */
+button:disabled,
+.dd:disabled,
+.opt:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+    transform: none !important;
+}
+
+button:disabled:hover {
+    box-shadow: none !important;
+}
+
+/* ============================================
+   PRIORITY 8: TOAST & NOTIFICATION POLISH
+   ============================================ */
+
+/* 8.1 Toast Improvements */
+.qtoast {
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   PRIORITY 9: BADGE & CHIP POLISH
+   ============================================ */
+
+/* 9.1 Chip Enhancements */
+.chip {
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* ============================================
+   PRIORITY 10: BACKDROP IMPROVEMENTS
+   ============================================ */
+
+/* 10.1 Modal Backdrop Animation */
+#ddx {
+    transition: opacity 0.2s;
+    backdrop-filter: blur(2px);
+}
+
+#ddx.on {
+    animation: fadeIn 0.2s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ============================================
+   PRIORITY 11: DROPDOWN IMPROVEMENTS
+   ============================================ */
+
+/* 11.1 Dropdown Panel Animation */
+.ddp {
+    animation: slideDown 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   PRIORITY 12: PRINT STYLES
+   ============================================ */
+
+@media print {
+    #bar,
+    nav,
+    button,
+    .tools,
+    .toggle,
+    footer {
+        display: none !important;
+    }
+    
+    .card {
+        break-inside: avoid;
+    }
+    
+    details {
+        break-inside: avoid;
+    }
+    
+    details[open] summary::after {
+        display: none;
+    }
+}
+
+/* ============================================
+   PRIORITY 13: HIGH CONTRAST MODE
+   ============================================ */
+
+@media (prefers-contrast: high) {
+    button,
+    .dd,
+    .card {
+        border-width: 2px;
+    }
+    
+    .chip {
+        border: 2px solid currentColor;
+    }
+}
+
+/* ============================================
+   PRIORITY 14: SELECTION STYLING
+   ============================================ */
+
+::selection {
+    background: #002C5F;
+    color: #ffffff;
+}
+
+::-moz-selection {
+    background: #002C5F;
+    color: #ffffff;
+}
